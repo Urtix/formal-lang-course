@@ -27,6 +27,6 @@ def save_graph(graph, path: str):
 
 
 # Constructing and saving  a graph from two cycles by the number of nodes in the cycles and the names of labels
-def create_labeled_two_cycles_graph(n: int, m: int, labels: tuple[str, str], path):
+def create_labeled_two_cycles_graph(n: int, m: int, labels: tuple[str, str], save_path):
     graph = cfpq.labeled_two_cycles_graph(n, m, labels=labels)
-    save_graph(graph, path)
+    save_graph(graph, save_path)
