@@ -3,6 +3,7 @@ import pyformlang.finite_automaton as fa
 from pyformlang.regular_expression import Regex
 
 
+# Constructing a minimal DFA using a given regular expression.
 def regex_to_dfa(regex: str) -> fa.DeterministicFiniteAutomaton:
     nfa = Regex(regex).to_epsilon_nfa()
     dfa = nfa.to_deterministic()
@@ -10,6 +11,7 @@ def regex_to_dfa(regex: str) -> fa.DeterministicFiniteAutomaton:
     return dfa.minimize()
 
 
+# Construction of a non-deterministic finite automaton from a graph
 def graph_to_nfa(
     graph: MultiDiGraph, start_states: set[int], final_states: set[int]
 ) -> fa.NondeterministicFiniteAutomaton:

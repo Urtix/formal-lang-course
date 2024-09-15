@@ -33,5 +33,6 @@ def create_labeled_two_cycles_graph(n: int, m: int, labels: tuple[str, str], sav
     save_graph(graph, save_path)
 
 
+# Loading a graph from DOT format
 def load_graph_from_dot(load_path):
     return nx.DiGraph(nx_pydot.read_dot(load_path))

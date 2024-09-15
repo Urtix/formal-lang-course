@@ -5,6 +5,7 @@ from project.create_finite_automaton import regex_to_dfa, graph_to_nfa
 
 
 class TestFA:
+    # Checking the regex_to_dfa function using a regular expression
     def test_regex_to_dfa(self):
         dfa = regex_to_dfa("a*b|c|d")
 
@@ -17,6 +18,7 @@ class TestFA:
         assert dfa.is_deterministic()
         assert dfa.is_equivalent_to(dfa.minimize())
 
+    # Checking the graph_to_nfa function using the generated graph saved in DOT format
     def test_generated_graph_to_nfa(self):
         graph = load_graph_from_dot("tests/test_graph_file.dot")
         nfa = graph_to_nfa(graph, (), ())
@@ -30,6 +32,7 @@ class TestFA:
             == 21
         )
 
+    # Checking the regex_to_dfa function using a graph loaded by name
     @pytest.mark.parametrize(
         "graph_name, start_states, final_states",
         [
