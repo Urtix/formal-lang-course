@@ -36,8 +36,8 @@ class TestFA:
     @pytest.mark.parametrize(
         "graph_name, start_states, final_states",
         [
-            pytest.param("skos", {1}, {2}, id="wc_with_start_and_final"),
-            pytest.param("skos", (), (), id="wc"),
+            pytest.param("skos", {1}, {2}, id="skos_with_start_and_final"),
+            pytest.param("skos", (), (), id="skos"),
             pytest.param("wc", {1}, {2}, id="wc_with_start_and_final"),
             pytest.param("wc", (), (), id="wc"),
         ],
