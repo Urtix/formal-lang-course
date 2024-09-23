@@ -1,7 +1,5 @@
 import networkx as nx
 
-from itertools import product
-
 from project.adjacency_matrix_fa import AdjacencyMatrixFA, intersect_automata
 from project.create_finite_automaton import regex_to_dfa, graph_to_nfa
 
