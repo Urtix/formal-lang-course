@@ -1,5 +1,6 @@
 import cfpq_data as cfpq
 from networkx.drawing import nx_pydot
+import networkx as nx
 
 
 # Getting a graph by name
@@ -30,3 +31,8 @@ def save_graph(graph, path: str):
 def create_labeled_two_cycles_graph(n: int, m: int, labels: tuple[str, str], save_path):
     graph = cfpq.labeled_two_cycles_graph(n, m, labels=labels)
     save_graph(graph, save_path)
+
+
+# Loading a graph from DOT format
+def load_graph_from_dot(load_path):
+    return nx.DiGraph(nx_pydot.read_dot(load_path))
