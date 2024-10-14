@@ -4,8 +4,8 @@ import numpy as np
 from scipy.sparse import csr_matrix
 from pyformlang.finite_automaton import Symbol
 
-from adjacency_matrix_fa import AdjacencyMatrixFA
-from create_finite_automaton import regex_to_dfa, graph_to_nfa
+from project.adjacency_matrix_fa import AdjacencyMatrixFA
+from project.create_finite_automaton import regex_to_dfa, graph_to_nfa
 
 
 def front(regex_fa: AdjacencyMatrixFA, graph_fa: AdjacencyMatrixFA) -> csr_matrix:
