@@ -19,7 +19,9 @@ class AdjacencyMatrixFA:
         graph = automaton.to_networkx()
         self.number_of_states = graph.number_of_nodes()
         self.states = dict(zip(graph.nodes, range(self.number_of_states)))
-        self.start_states = set(self.states.keys()).intersection(automaton.start_states)
+        self.start_states = set(
+            filter(lambda state: state in automaton.start_states, self.states.keys())
+        )
         self.final_states = set(self.states.keys()).intersection(automaton.final_states)
 
         transitions = {}
