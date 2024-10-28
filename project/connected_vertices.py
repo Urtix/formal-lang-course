@@ -1,7 +1,7 @@
 import networkx as nx
 
-from project.adjacency_matrix_fa import AdjacencyMatrixFA, intersect_automata
-from project.create_finite_automaton import regex_to_dfa, graph_to_nfa
+from adjacency_matrix_fa import AdjacencyMatrixFA, intersect_automata
+from create_finite_automaton import regex_to_dfa, graph_to_nfa
 
 
 def tensor_based_rpq(
