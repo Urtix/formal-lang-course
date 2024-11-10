@@ -1,7 +1,7 @@
 import networkx as nx
 
-from adjacency_matrix_fa import AdjacencyMatrixFA, intersect_automata
-from create_finite_automaton import regex_to_dfa, graph_to_nfa
+from project.regex.adjacency_matrix_fa import AdjacencyMatrixFA, intersect_automata
+from project.regex.create_finite_automaton import regex_to_dfa, graph_to_nfa
 
 
 def tensor_based_rpq(
@@ -21,8 +21,8 @@ def tensor_based_rpq(
         for graph_final in graph_to_matrix.final_states
         if any(
             closure[
-                intersection.states[(regex_start, graph_start)],
-                intersection.states[(regex_final, graph_final)],
+                intersection.state_id[(regex_start, graph_start)],
+                intersection.state_id[(regex_final, graph_final)],
             ]
             for regex_start in regex_to_matrix.start_states
             for regex_final in regex_to_matrix.final_states

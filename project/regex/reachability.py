@@ -4,8 +4,8 @@ import numpy as np
 from scipy.sparse import csr_matrix
 from pyformlang.finite_automaton import Symbol
 
-from project.adjacency_matrix_fa import AdjacencyMatrixFA
-from project.create_finite_automaton import regex_to_dfa, graph_to_nfa
+from project.regex.adjacency_matrix_fa import AdjacencyMatrixFA
+from project.regex.create_finite_automaton import regex_to_dfa, graph_to_nfa
 
 
 def front(regex_fa: AdjacencyMatrixFA, graph_fa: AdjacencyMatrixFA) -> csr_matrix:
@@ -16,13 +16,18 @@ def front(regex_fa: AdjacencyMatrixFA, graph_fa: AdjacencyMatrixFA) -> csr_matri
         )
     )
 
-    graph_start_states = sorted(graph_fa.start_states)
+    graph_start_states = {
+        state
+        for state, _ in sorted(
+            graph_fa.start_states_id.items(), key=lambda item: item[1]
+        )
+    }
     for i, graph_state in enumerate(graph_start_states):
         for regex_state in regex_fa.start_states:
             regex_fa_state = (
-                regex_fa.states[regex_state] + i * regex_fa.number_of_states
+                regex_fa.state_id[regex_state] + i * regex_fa.number_of_states
             )
-            graph_fa_state = graph_fa.states[graph_state]
+            graph_fa_state = graph_fa.state_id[graph_state]
             current_front[regex_fa_state, graph_fa_state] = True
 
     return current_front
@@ -67,15 +72,20 @@ def ms_bfs_based_rpq(
         visited += current_front
 
     pairs = set()
-    graph_start_states = sorted(graph_nfa.start_states)
-    graph_dict = {v: k for k, v in graph_nfa.states.items()}
+    graph_start_states = {
+        state
+        for state, _ in sorted(
+            graph_nfa.start_states_id.items(), key=lambda item: item[1]
+        )
+    }
+    graph_dict = {v: k for k, v in graph_nfa.state_id.items()}
 
     for i, graph_start in enumerate(graph_start_states):
         start = i * regex_dfa.number_of_states
         end = (i + 1) * regex_dfa.number_of_states
         for regex_final in regex_dfa.final_states:
             for visit_i in (
-                visited[start:end].getrow(regex_dfa.states[regex_final]).indices
+                visited[start:end].getrow(regex_dfa.state_id[regex_final]).indices
             ):
                 if graph_dict[visit_i] in graph_nfa.final_states:
                     pairs.add((graph_start, graph_dict[visit_i]))
