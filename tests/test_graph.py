@@ -1,7 +1,7 @@
 import os
 from pathlib import Path
 
-from project.graph import graph_info, create_labeled_two_cycles_graph
+from project.regex.graph import graph_info, create_labeled_two_cycles_graph
 
 
 class TestGraph:

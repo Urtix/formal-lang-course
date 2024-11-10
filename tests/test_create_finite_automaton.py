@@ -1,7 +1,7 @@
 import pytest
 
-from project.graph import load_graph, load_graph_from_dot
-from project.create_finite_automaton import regex_to_dfa, graph_to_nfa
+from project.regex.graph import load_graph, load_graph_from_dot
+from project.regex.create_finite_automaton import regex_to_dfa, graph_to_nfa
 
 
 class TestFA:
