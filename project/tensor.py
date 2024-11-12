@@ -15,6 +15,7 @@ def tensor_based_cfpq(
     final_nodes: set[int] = None,
 ) -> set[tuple[int, int]]:
     rsm_matrix = AdjacencyMatrixFA(rsm_to_nfa(rsm))
+
     graph_matrix = AdjacencyMatrixFA(
         graph_to_nfa(nx.MultiDiGraph(graph), start_nodes, final_nodes)
     )
