@@ -1,7 +1,7 @@
 import networkx as nx
 
 from pyformlang.cfg import CFG, Terminal
-from project.wcnf import cfg_to_weak_normal_form
+from project.cfg.wcnf import cfg_to_weak_normal_form
 from collections import defaultdict
 from scipy.sparse import lil_matrix
 

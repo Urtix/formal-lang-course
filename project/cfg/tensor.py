@@ -5,7 +5,7 @@ from project.regex.adjacency_matrix_fa import AdjacencyMatrixFA, intersect_autom
 from scipy.sparse import csc_matrix
 from pyformlang.finite_automaton import Symbol, State
 from project.regex.create_finite_automaton import graph_to_nfa
-from project.rsm import rsm_to_nfa
+from project.cfg.rsm import rsm_to_nfa
 
 
 def tensor_based_cfpq(
